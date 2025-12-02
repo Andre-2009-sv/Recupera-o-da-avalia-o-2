@@ -1,0 +1,68 @@
+INÍCIO
+
+    criar lista vazia de itens
+    próximoID ← 1
+
+    REPETIR
+        mostrar menu:
+            1 - Inserir item
+            2 - Consultar por palavra-chave
+            3 - Listar todos os itens
+            4 - Excluir item
+            5 - Atualizar item
+            0 - Sair
+        ler opção
+
+        SE opção = 1 ENTÃO
+            ler novoItem
+            criar item com:
+                id ← próximoID
+                texto ← novoItem
+            adicionar item na lista
+            próximoID ← próximoID + 1
+        FIM SE
+
+        SE opção = 2 ENTÃO
+            ler palavra
+            PARA cada item na lista
+                SE item.texto contém palavra ENTÃO
+                    mostrar item.id e item.texto
+                FIM SE
+            FIM PARA
+        FIM SE
+
+        SE opção = 3 ENTÃO
+            PARA cada item na lista
+                mostrar item.id e item.texto
+            FIM PARA
+        FIM SE
+
+        SE opção = 4 ENTÃO
+            mostrar sub-menu:
+                A - Excluir por ID
+                B - Excluir por palavra-chave
+            ler escolha
+
+            SE escolha = 'A' ENTÃO
+                ler idExcluir
+                remover item cujo id = idExcluir
+            SENÃO SE escolha = 'B' ENTÃO
+                ler palavra
+                remover todos os itens cujo texto contém palavra
+            FIM SE
+        FIM SE
+
+        SE opção = 5 ENTÃO
+            ler idAtualizar
+            procurar item com este ID
+            SE existir ENTÃO
+                ler novoTexto
+                item.texto ← novoTexto
+            SENÃO
+                mostrar "ID não encontrado"
+            FIM SE
+        FIM SE
+
+    ATÉ opção = 0
+
+FIM
